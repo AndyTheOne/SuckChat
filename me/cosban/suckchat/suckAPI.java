@@ -6,6 +6,8 @@ import org.bukkit.plugin.PluginManager;
 
 import me.cosban.suckchat.managers.ChannelManager;
 import me.cosban.suckchat.managers.CommandManager;
+import me.cosban.suckchat.managers.ConfigManager;
+import me.cosban.suckchat.parsers.Censor;
 
 public class suckAPI {
 	
@@ -14,9 +16,11 @@ public class suckAPI {
 	private PluginManager pm;
 	private Logger log;
 	private SuckListener listener;
+	private ConfigManager config;
 	private Messenger messenger;
 	private ChannelManager channel;
 	private CommandManager command;
+	private Censor censor;
 	
 	public suckAPI(SuckChat suckChat) {
 		suckChat = plugin;
@@ -25,8 +29,11 @@ public class suckAPI {
 		messenger = Messenger.getMessenger(getPlugin());
 		//managers
 		pm = getPlugin().getServer().getPluginManager();
+		censor = Censor.getCensor(getPlugin());
+		config = ConfigManager.getManager(getPlugin());
 		channel = ChannelManager.getManager(getPlugin());
 		command = CommandManager.getManager(getPlugin());
+		
 	}
 	
 	public SuckChat getPlugin(){
@@ -53,6 +60,10 @@ public class suckAPI {
 		return pm;
 	}
 	
+	public ConfigManager getConfigManager(){
+		return config;
+	}
+	
 	public ChannelManager getChannelManager(){
 		return channel;
 	}
@@ -61,4 +72,7 @@ public class suckAPI {
 		return command;
 	}
 
+	public Censor getCensor(){
+		return censor;
+	}
 }

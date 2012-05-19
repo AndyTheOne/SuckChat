@@ -14,6 +14,7 @@ public class SuckChat extends JavaPlugin
 	public void onEnable()
 	{
 		api = new suckAPI(this);
+		loadDependencies();
 		getAPI().getLog().info("Enabled");
 	}
 

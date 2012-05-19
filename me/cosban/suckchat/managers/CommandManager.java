@@ -10,8 +10,8 @@ import me.cosban.suckchat.SuckChat;
 public class CommandManager {
 	private static SuckChat plugin;
 	
-	private CommandManager(SuckChat plugin){
-		this.plugin = plugin;
+	private CommandManager(SuckChat instance){
+		plugin = instance;
 	}
 	
 	public static CommandManager getManager(SuckChat plugin) {
@@ -28,5 +28,4 @@ public class CommandManager {
 		p.sendMessage(ChatColor.RED + "Insufficient permissions to perform command");
 		return false;
 	}
-
 }
