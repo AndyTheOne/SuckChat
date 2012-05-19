@@ -1,0 +1,17 @@
+    48903                     23 files
+ple want me to write a README file for the plugin, so I guess I will
+
+Installation/Configuration:
+1. Copy suckchat.jar into your plugins folder
+2. Run your server, this will automatically write default values out for your configuration
+3. Stop the server and edit the configuration files to your heart's contempt
+4. Start the server again
+
+You are now operational.
+
+If you, for any reason, need support for this plugin, join us on #cosban at irc.rozznet.net
+
+Also there is the whole license thing. It basically goes like this:
+1. Use the software at your own risk, any harm that it does is your fault.
+2. Copy this software as you want, you just have to give me credit for it.
+
