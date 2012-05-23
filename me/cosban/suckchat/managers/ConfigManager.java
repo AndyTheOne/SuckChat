@@ -62,7 +62,7 @@ public class ConfigManager
 		config.addDefault("chat.censor.enabled", Boolean.valueOf(false));
 		config.addDefault("chat.censor.list", bad);
 		config.addDefault("chat.censor.replacements", repl);
-		config.addDefault("chat.format.format", "%prefix%%clancolor%[%group%]&f%nick%: %message%");
+		config.addDefault("chat.format", "%prefix%%clancolor%[%group%]&f%nick%: %message%");
 	}
 	
 	

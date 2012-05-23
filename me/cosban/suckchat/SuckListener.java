@@ -28,7 +28,7 @@ implements Listener
 
 	@EventHandler(priority=EventPriority.NORMAL)
 	public void onPlayerChat(PlayerChatEvent event) {
-		plugin.getAPI().getMessenger().sendMessage(event.getPlayer(), event.getMessage());
+		plugin.getAPI().getMessenger().prepareMessage(event.getPlayer(), event.getMessage());
 		event.setCancelled(true);
 	}
 	@EventHandler(priority=EventPriority.NORMAL)
@@ -39,6 +39,5 @@ implements Listener
 	}
 
 	public void onPlayerFormedChat(Player m, Player e, String info, String msg){
-
 	}
 }

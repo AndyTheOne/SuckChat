@@ -8,8 +8,9 @@ import ru.tehkode.permissions.bukkit.PermissionsEx;
 
 public class SuckChat extends JavaPlugin
 {
-	private suckAPI api;
+	private static suckAPI api;
 	public static boolean usePermEx;
+	public PermissionManager permEx;
 
 	public void onEnable()
 	{
@@ -21,8 +22,7 @@ public class SuckChat extends JavaPlugin
 	public void onDisable() {
 		getAPI().getLog().info("Disabled");
 	}
-	
-	public suckAPI getAPI(){
+	public static suckAPI getAPI(){
 		return api;
 	}
 
@@ -32,7 +32,7 @@ public class SuckChat extends JavaPlugin
 
 	private void loadDependencies() {
 		if (getServer().getPluginManager().isPluginEnabled("PermissionsEx")) {
-			PermissionManager permEx = PermissionsEx.getPermissionManager();
+			permEx = PermissionsEx.getPermissionManager();
 			usePermEx = true;
 			getAPI().getLog().info("Attached to PermissionsEx");
 		} else {
