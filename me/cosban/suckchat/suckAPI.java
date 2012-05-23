@@ -15,7 +15,7 @@ public class suckAPI {
 	private SuckChat plugin;
 	private suckAPI api;
 	private PluginManager pm;
-	private Logger log;
+	private Logger logger;
 	private SuckListener listener;
 	private ConfigManager config;
 	private Messenger messenger;
@@ -24,12 +24,11 @@ public class suckAPI {
 	private Parser parser;
 	private Censor censor;
 	
-	public suckAPI(SuckChat suckChat) {
-		suckChat = plugin;
+	public suckAPI(SuckChat instance) {
+		plugin = instance;
 		api = this;
-		log = Logger.getLogger("Minecraft");
+		logger = Logger.getLogger("Minecraft");
 		messenger = Messenger.getMessenger(getPlugin());
-		//managers
 		pm = getPlugin().getServer().getPluginManager();
 		censor = Censor.getCensor(getPlugin());
 		config = ConfigManager.getManager(getPlugin());
@@ -46,8 +45,8 @@ public class suckAPI {
 		return api;
 	}
 	
-	public Logger getLog(){
-		return log;
+	public Logger getLogger(){
+		return logger;
 	}
 	
 	public Messenger getMessenger(){

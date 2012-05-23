@@ -16,11 +16,11 @@ public class SuckChat extends JavaPlugin
 	{
 		api = new suckAPI(this);
 		loadDependencies();
-		getAPI().getLog().info("Enabled");
+		getAPI().getLogger().info("Enabled");
 	}
 
 	public void onDisable() {
-		getAPI().getLog().info("Disabled");
+		getAPI().getLogger().info("Disabled");
 	}
 	public static suckAPI getAPI(){
 		return api;
@@ -34,7 +34,7 @@ public class SuckChat extends JavaPlugin
 		if (getServer().getPluginManager().isPluginEnabled("PermissionsEx")) {
 			permEx = PermissionsEx.getPermissionManager();
 			usePermEx = true;
-			getAPI().getLog().info("Attached to PermissionsEx");
+			getAPI().getLogger().info("[SuckChat] Attached to PermissionsEx");
 		} else {
 			usePermEx = false;
 		}
