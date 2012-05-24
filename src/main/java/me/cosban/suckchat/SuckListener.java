@@ -10,18 +10,16 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 import me.cosban.suckchat.managers.ChannelManager;
 
-public class SuckListener
-implements Listener
-{
-	SuckChat plugin;
+public class SuckListener implements Listener {
+	private SuckChat plugin;
 
-	public SuckListener(SuckChat instance)
-	{
+	public SuckListener(SuckChat instance) {
 		this.plugin = instance;
 	}
+	
 	@EventHandler(priority=EventPriority.NORMAL)
 	public void onPlayerJoin(PlayerJoinEvent event) {
-		if(event.getPlayer().hasPermission("chat.surewhynot")){
+		if (event.getPlayer().hasPermission("chat.surewhynot")) {
 			plugin.getAPI().getChannelManager().getChannel("main").addPlayer(event.getPlayer());
 		}
 	}
@@ -31,6 +29,7 @@ implements Listener
 		plugin.getAPI().getMessenger().prepareMessage(event.getPlayer(), event.getMessage());
 		event.setCancelled(true);
 	}
+	
 	@EventHandler(priority=EventPriority.NORMAL)
 	public void onPlayerQuit(PlayerQuitEvent event) {
 		for (Channel ch : plugin.getAPI().getChannelManager().getPlayerChannels(event.getPlayer())) {
@@ -38,6 +37,7 @@ implements Listener
 		}
 	}
 
-	public void onPlayerFormedChat(Player m, Player e, String info, String msg){
+	public void onPlayerFormedChat(Player m, Player e, String info, String msg) {
+		
 	}
 }

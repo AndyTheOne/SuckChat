@@ -9,22 +9,22 @@ import me.cosban.suckchat.SuckChat;
 
 public class Censor {
 	private SuckChat plugin;
-	private HashMap<String,Double> bad = new HashMap<>();
-	private ArrayList<String> repl = new ArrayList<>();
+	private HashMap<String,Double> bad = new HashMap<String,Double>();
+	private ArrayList<String> repl = new ArrayList<String>();
 
-	private Censor(SuckChat instance){
+	private Censor(SuckChat instance) {
 		plugin = instance;
 		bad.put("cosban", .02);
 		repl.add("fuck");
 	}
 	
-	public static Censor getCensor(SuckChat instance){
+	public static Censor getCensor(SuckChat instance) {
 		Censor censor = new Censor(instance);
 		return censor;
 	}
 
-	public String censor(String s){
-		if(plugin.getAPI().getConfigManager().getBool("chat.censor.enabled")){
+	public String censor(String s) {
+		if (plugin.getAPI().getConfigManager().getBool("chat.censor.enabled")) {
 			String[] words = s.split("\\s");
 			String done = "";
 			for (int i = 0; i < words.length; i++) {
@@ -38,14 +38,15 @@ public class Censor {
 		} return s;
 	}
 
-	public HashMap<String,Double> getBad(){
+	public HashMap<String, Double> getBad() {
 		return bad;
 	}
 	
-	public ArrayList<String> getRepl(){
+	public ArrayList<String> getRepl() {
 		return repl;
 	}
 
+	@SuppressWarnings("unused")
 	private String getLastColor(String s) {
 		if (s.contains("&")) {
 			if (s.endsWith("&")) return getLastColor(s.substring(0, s.lastIndexOf("&")));

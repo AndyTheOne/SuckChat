@@ -7,19 +7,19 @@ import ru.tehkode.permissions.PermissionGroup;
 import me.cosban.suckchat.SuckChat;
 
 public class Parser {
-
-	private Parser(SuckChat instance){
-		
+	private SuckChat plugin;
+	
+	public Parser(SuckChat instance) {
+		this.plugin = instance;
 	}
 
-	public static Parser getParser(SuckChat instance){
+	public static Parser getParser(SuckChat instance) {
 		Parser parser = new Parser(instance);
 		return parser;
 	}
 
-	public String getInfo(Player m){
-		String info = SuckChat.getAPI().getConfigManager().getString("chat.format");
-
+	public String getInfo(Player m) {
+		String info = plugin.getAPI().getConfigManager().getString("chat.format");
 		return info;
 	}
 
@@ -49,7 +49,7 @@ public class Parser {
 	public String parsePrefix(String s, Player m) {
 		String prefix = "";
 		if (SuckChat.usePermEx) {
-			PermissionGroup[] groups = SuckChat.getAPI().getPlugin().permEx.getUser(m).getGroups();
+			PermissionGroup[] groups = plugin.getAPI().getPlugin().permEx.getUser(m).getGroups();
 			for (PermissionGroup group : groups) {
 				try {
 					if (group.getOwnPrefix() != null)
@@ -66,7 +66,7 @@ public class Parser {
 	public String parseSuffix(String s, Player m) {
 		String Suffix = "";
 		if (SuckChat.usePermEx) {
-			PermissionGroup[] groups = SuckChat.getAPI().getPlugin().permEx.getUser(m).getGroups();
+			PermissionGroup[] groups = plugin.getAPI().getPlugin().permEx.getUser(m).getGroups();
 			for (PermissionGroup group : groups) {
 				try {
 					if (group.getOwnSuffix() != null)
@@ -83,9 +83,9 @@ public class Parser {
 	public String parseGroup(String s, Player m) {
 		String groupNames = "";
 		if (SuckChat.usePermEx) {
-			String[] groups = SuckChat.getAPI().getPlugin().permEx.getUser(m).getGroupsNames();
+			String[] groups = plugin.getAPI().getPlugin().permEx.getUser(m).getGroupsNames();
 			for (String group : groups) {
-				if ((!SuckChat.getAPI().getPlugin().permEx.getGroup(group).has("chat.noshow")) || (SuckChat.getAPI().getPlugin().permEx.getGroup(group).has("*"))) {
+				if ((!plugin.getAPI().getPlugin().permEx.getGroup(group).has("chat.noshow")) || (plugin.getAPI().getPlugin().permEx.getGroup(group).has("*"))) {
 					groupNames = groupNames + group + " ";
 				}
 			}
@@ -94,9 +94,10 @@ public class Parser {
 	}
 
 	public boolean toShowName(String s, Player m) {
+		@SuppressWarnings("unused")
 		boolean show = true;
 		if (SuckChat.usePermEx) {
-			for (String t : SuckChat.getAPI().getPlugin().permEx.getGroup(s).getOwnPermissions(m.getWorld().getName())) {
+			for (String t : plugin.getAPI().getPlugin().permEx.getGroup(s).getOwnPermissions(m.getWorld().getName())) {
 				if (t.equals("chat.noshow")) show = false;
 				if (t.equals("*")) return true;
 			}
@@ -118,5 +119,4 @@ public class Parser {
 		System.out.println(time);
 		return hours + ":" + minutes + ":" + seconds;
 	}
-
 }

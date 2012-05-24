@@ -10,8 +10,8 @@ public class ConfigManager
 {
 	public static SuckChat plugin;
 	private FileConfiguration config;
-	private ArrayList<String> bad = new ArrayList<>();
-	private ArrayList<String> repl = new ArrayList<>();
+	private ArrayList<String> bad = new ArrayList<String>();
+	private ArrayList<String> repl = new ArrayList<String>();
 
 	private ConfigManager(SuckChat instance){
 		bad.add("cosban:0.1");
@@ -51,7 +51,7 @@ public class ConfigManager
 		try {
 			plugin.saveConfig();
 		} catch (Exception e) {
-			plugin.getAPI().getLogger().info("[suckchat] Unable to save config.yml");
+			plugin.getAPI().getLogger().info("[SuckChat] Unable to save config.yml");
 		}
 	}
 
