@@ -51,7 +51,8 @@ public class ConfigManager
 		try {
 			plugin.saveConfig();
 		} catch (Exception e) {
-			plugin.getAPI().getLogger().info("[SuckChat] Unable to save config.yml");
+			SuckChat.getAPI().getLogger().info("[SuckChat] Unable to save config.yml");
+			e.printStackTrace();
 		}
 	}
 

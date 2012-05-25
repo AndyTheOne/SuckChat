@@ -8,12 +8,10 @@ import me.cosban.suckchat.SuckChat;
 
 
 public class Censor {
-	private SuckChat plugin;
-	private HashMap<String,Double> bad = new HashMap<String,Double>();
+	private HashMap<String, Double> bad = new HashMap<String, Double>();
 	private ArrayList<String> repl = new ArrayList<String>();
 
 	private Censor(SuckChat instance) {
-		plugin = instance;
 		bad.put("cosban", .02);
 		repl.add("fuck");
 	}
@@ -24,7 +22,7 @@ public class Censor {
 	}
 
 	public String censor(String s) {
-		if (plugin.getAPI().getConfigManager().getBool("chat.censor.enabled")) {
+		if (SuckChat.getAPI().getConfigManager().getBool("chat.censor.enabled")) {
 			String[] words = s.split("\\s");
 			String done = "";
 			for (int i = 0; i < words.length; i++) {

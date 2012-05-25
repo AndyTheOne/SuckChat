@@ -16,8 +16,8 @@ public class Messenger {
 
 	// Triggers a formed chat event due to already being parsed.
 	public void sendPlayer(Player m, Player e, String info, String msg) {
-		e.sendMessage(/*info +*/ msg);
-		plugin.getAPI().getListener().onPlayerFormedChat(m, e, info, msg);
+		e.sendMessage(prepareMessage(e, info, msg));
+		SuckChat.getAPI().getListener().onPlayerFormedChat(m, e, info, msg);
 	}
 
 	public void sendChannel(Player m, Channel ch, String info, String msg) {
@@ -32,7 +32,12 @@ public class Messenger {
 		}
 	}
 	
-	public void prepareMessage(Player m, String msg) {
-
+	// initial parsing for the mouth
+	public String prepareInfo(Player player) {
+		return SuckChat.getAPI().getParser().getInfo(player);
+	}
+	
+	public String prepareMessage(Player player, String info, String message) {
+		return SuckChat.getAPI().getParser().getMsg(player, info, message);
 	}
 }

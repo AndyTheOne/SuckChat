@@ -14,14 +14,14 @@ public class SuckChat extends JavaPlugin {
 	public void onEnable() {
 		api = new SuckAPI(this);
 		loadDependencies();
-		getAPI().getLogger().info("Enabled");
+		getServer().getPluginManager().registerEvents(new SuckListener(), this);
 	}
 
 	public void onDisable() {
-		getAPI().getLogger().info("Disabled");
+
 	}
-	
-	public SuckAPI getAPI() {
+
+	public static SuckAPI getAPI() {
 		return api;
 	}
 

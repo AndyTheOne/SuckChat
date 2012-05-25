@@ -8,31 +8,24 @@ import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import me.cosban.suckchat.managers.ChannelManager;
-
 public class SuckListener implements Listener {
-	private SuckChat plugin;
-
-	public SuckListener(SuckChat instance) {
-		this.plugin = instance;
-	}
-	
-	@EventHandler(priority=EventPriority.NORMAL)
+	@EventHandler(priority = EventPriority.NORMAL)
 	public void onPlayerJoin(PlayerJoinEvent event) {
 		if (event.getPlayer().hasPermission("chat.surewhynot")) {
-			plugin.getAPI().getChannelManager().getChannel("main").addPlayer(event.getPlayer());
+			SuckChat.getAPI().getChannelManager().getChannel("main").addPlayer(event.getPlayer());
 		}
 	}
 
-	@EventHandler(priority=EventPriority.NORMAL)
+	@EventHandler(priority = EventPriority.NORMAL)
 	public void onPlayerChat(PlayerChatEvent event) {
-		plugin.getAPI().getMessenger().prepareMessage(event.getPlayer(), event.getMessage());
+		String info = SuckChat.getAPI().getMessenger().prepareInfo(event.getPlayer());
+		SuckChat.getAPI().getMessenger().sendMessage(event.getPlayer(), info, event.getMessage());
 		event.setCancelled(true);
 	}
 	
-	@EventHandler(priority=EventPriority.NORMAL)
+	@EventHandler(priority = EventPriority.NORMAL)
 	public void onPlayerQuit(PlayerQuitEvent event) {
-		for (Channel ch : plugin.getAPI().getChannelManager().getPlayerChannels(event.getPlayer())) {
+		for (Channel ch : SuckChat.getAPI().getChannelManager().getPlayerChannels(event.getPlayer())) {
 			ch.removePlayer(event.getPlayer());
 		}
 	}
