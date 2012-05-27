@@ -1,5 +1,7 @@
 package me.cosban.suckchat;
 
+import me.cosban.suckchat.event.ChatEvent;
+
 import org.bukkit.entity.Player;
 
 public class Messenger {
@@ -30,6 +32,7 @@ public class Messenger {
 		for (Player e : plugin.getServer().getOnlinePlayers()) {
 			sendPlayer(m, e, info, msg);
 		}
+		plugin.getServer().getPluginManager().callEvent(new ChatEvent(m, msg, "main"));
 	}
 	
 	// initial parsing for the mouth

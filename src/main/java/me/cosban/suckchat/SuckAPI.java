@@ -2,14 +2,13 @@ package me.cosban.suckchat;
 
 import java.util.logging.Logger;
 
-import org.bukkit.Bukkit;
-import org.bukkit.plugin.PluginManager;
-
 import me.cosban.suckchat.managers.ChannelManager;
-import me.cosban.suckchat.managers.CommandManager;
 import me.cosban.suckchat.managers.ConfigManager;
 import me.cosban.suckchat.parsers.Censor;
 import me.cosban.suckchat.parsers.Parser;
+
+import org.bukkit.Bukkit;
+import org.bukkit.plugin.PluginManager;
 
 public class SuckAPI {
 	private SuckChat plugin;
@@ -20,7 +19,6 @@ public class SuckAPI {
 	private ConfigManager config;
 	private Messenger messenger;
 	private ChannelManager channel;
-	private CommandManager command;
 	private Parser parser;
 	private Censor censor;
 	
@@ -33,7 +31,6 @@ public class SuckAPI {
 		censor = Censor.getCensor(getPlugin());
 		config = ConfigManager.getManager(getPlugin());
 		channel = ChannelManager.getManager(getPlugin());
-		command = CommandManager.getManager(getPlugin());
 		parser = new Parser(instance);
 	}
 	
@@ -67,10 +64,6 @@ public class SuckAPI {
 	
 	public ChannelManager getChannelManager() {
 		return channel;
-	}
-	
-	public CommandManager getCommandManager() {
-		return command;
 	}
 
 	public Censor getCensor() {

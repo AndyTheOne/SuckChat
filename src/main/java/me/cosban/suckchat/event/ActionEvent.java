@@ -3,17 +3,17 @@ package me.cosban.suckchat.event;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 
-public class ChatEvent extends SuckEvent {
+public class ActionEvent extends SuckEvent {
     private static final HandlerList handlers = new HandlerList();
-
+    
     /**
-     * Event for handling chat messages.
+     * Event for action messages.
      * 
      * @param player The player sending the message.
      * @param message The message itself.
-     * @param channel The channel the message was sent to.
+     * @param channel The channel this occurred in.
      */
-	public ChatEvent(Player player, String message, String channel) {
+	public ActionEvent(Player player, String message, String channel) {
 		super(player, message, channel);
 	}
 
@@ -21,7 +21,7 @@ public class ChatEvent extends SuckEvent {
 	public HandlerList getHandlers() {
 		return null;
 	}
-
+	
     public static HandlerList getHandlerList() {
         return handlers;
     }

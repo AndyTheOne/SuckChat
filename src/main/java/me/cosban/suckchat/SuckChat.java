@@ -1,8 +1,10 @@
 package me.cosban.suckchat;
 
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
+import me.cosban.suckchat.commands.MuteCommand;
+import me.cosban.suckchat.commands.PrivateMessageCommand;
+
 import org.bukkit.plugin.java.JavaPlugin;
+
 import ru.tehkode.permissions.PermissionManager;
 import ru.tehkode.permissions.bukkit.PermissionsEx;
 
@@ -15,6 +17,12 @@ public class SuckChat extends JavaPlugin {
 		api = new SuckAPI(this);
 		loadDependencies();
 		getServer().getPluginManager().registerEvents(new SuckListener(), this);
+		
+		getCommand("mute").setExecutor(new MuteCommand());
+		getCommand("unmute").setExecutor(new MuteCommand());
+		getCommand("msg").setExecutor(new MuteCommand());
+		getCommand("pm").setExecutor(new PrivateMessageCommand());
+		getCommand("reply").setExecutor(new PrivateMessageCommand());
 	}
 
 	public void onDisable() {
@@ -23,10 +31,6 @@ public class SuckChat extends JavaPlugin {
 
 	public static SuckAPI getAPI() {
 		return api;
-	}
-
-	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-		return getAPI().getCommandManager().onCommand(sender, command, label, args);
 	}
 
 	private void loadDependencies() {

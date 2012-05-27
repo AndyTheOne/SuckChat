@@ -1,31 +1,33 @@
 name: SuckChat
 main: me.cosban.suckchat.SuckChat
-author: Cosban
+authors: [Cosban, Zimsky]
 website: http://phantomcraft.net/wiki/SuckChat
 description: Because chat plugins need to suck a little bit less.
-version: 0.3.0
+version: 1.1
 softdepend: [PhantomClans, PermissionsEx, bPermissions]
 commands:
-  pm:
+  message:
     description: Private message players.
-    aliases: [tell,whisper,msg]
-  r:
-    description: Reply to a pm
-    aliases: [reply]
-  ch:
+    aliases: ['tell', 'whisper', 'msg', 'pm']
+  reply:
+    description: Reply to a private message
+    aliases: ['r']
+  channel:
     description: Base channels command.
-  irc:
-    description: Send a message to IRC only.
+    aliases: ['ch']
   suckchat:
     description: General Commands
-  muteip:
-    description: Mutes an entire IP
+    aliases: ['sc']
   mute:
-    description: Mutes a specific player
+    description: Mutes a specific player/IP/CIDR
   unmute:
-    description: Unmutes a specific player
+    description: Unmutes a specific player/IP/CIDR
+  listmutes:
+    description: List all muted players/IPs/ranges
+    aliases: ['lmutes']
   me:
     description: Emote something
+    aliases: ['action']
 permissions:
   chat.*:
     description: All chat permissions.
@@ -35,7 +37,6 @@ permissions:
       chat.pm.*: true
       chat.emote: true
       chat.channels.*: true
-      chat.irc.*: true
   chat.variables.*:
     description: All variable based chat
     children:
@@ -53,8 +54,6 @@ permissions:
       chat.channels.send: true
       chat.channels.listen: true
       chat.channels.leave: true
-  chat.irc.*:
-    description: All irc perms
   chat.variables.colors:
     description: Allows usage of colored chat
   chat.variables.names:
